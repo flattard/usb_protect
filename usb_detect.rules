@@ -1,0 +1,6 @@
+# Le fichier de règle udev doit se trouver dans le dossier /etc/udev/rules.d/
+#cp ./usb_detect.rules /etc/udev/rules.d/
+# Il faut ensuite recharger les règles udev
+#sudo udevadm control --reload-rules && udevadm trigger
+
+ACTION=="add", SUBSYSTEM=="block", ENV{ID_BUS}=="usb", ENV{DEVTYPE}=="disk", IMPORT{builtin}=="usb_id", RUN+="/usr/local/bin/usb_alert.sh $devpath"
