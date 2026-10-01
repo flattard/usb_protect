@@ -1,4 +1,5 @@
 Copiez les fichiers de configuration et rendez le script exécutable :
+
 sudo mkdir -p /etc/usb_security
 sudo cp whitelist.txt /etc/usb_security/
 sudo cp usb_detect.rules /etc/udev/rules.d/
@@ -6,9 +7,11 @@ sudo cp usb_alert.sh /usr/local/bin/
 sudo chmod +x /usr/local/bin/usb_alert.sh
 
 Appliquez la configuration :
+
 sudo udevadm control --reload-rules && sudo udevadm trigger
 
 Pour faire des tests :
+
 watch -n 0.1 lsblk
 tail -f /var/log/usb_security.log
 
